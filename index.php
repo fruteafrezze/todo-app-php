@@ -7,6 +7,16 @@ $conn = koneksiDB();
 $result = mysqli_query($conn, "SELECT * FROM activity_list ORDER BY id DESC");
 echo "Selamat datang, " . $_SESSION['username'];
 
+$limit = 3;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+$result = mysqli_query($conn, "SELECT * FROM activity_list ORDER BY id DESC LIMIT $limit OFFSET $offset");
+
+$total_result = mysqli_query($conn, "SELECT COUNT(*) as total FROM activity_list");
+$total_row = mysqli_fetch_assoc($total_result);
+$total_data = $total_row['total'];
+$total_page = ceil($total_data / $limit);
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +33,8 @@ echo "Selamat datang, " . $_SESSION['username'];
                 <button type="submit">Tambah</button>
             </form>
 
+<<<<<<< HEAD
+=======
             <table border="1" cellspacing="0" cellpadding="10" style="margin: auto;">
                 <thead>
                     <tr>
@@ -50,6 +62,11 @@ echo "Selamat datang, " . $_SESSION['username'];
             </table>
         </div>
     <p><a href="logout.php">Logout</a></p>
-
+    <div>
+        <?php for ($i = 1; $i <= $total_page; $i++): ?>
+            <a href="?page=<?= $i ?>"><?= $i ?></a>
+        <?php endfor; ?>
+    </div>
     </body>
+>>>>>>> 693298511eb3bcdb1e7b7049ec0385d17aab4616
 </html>
