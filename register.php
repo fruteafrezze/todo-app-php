@@ -5,11 +5,9 @@ $pesan ="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    // koneksi ke DB pakai function lu
+    
     $conn = koneksiDB();
 
-    // Cek apakah username sudah dipake
     $cek = $conn->prepare("SELECT * FROM user_data WHERE username = ?");
     $cek->bind_param("s", $username);
     $cek->execute();
@@ -18,12 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         echo "Username sudah dipakai, bro!";
     } else {
-        // Insert user baru
         $stmt = $conn->prepare("INSERT INTO user_data (username, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $username, $password); // Note: password belum di-hash, nanti bisa ditingkatin
+        $stmt->bind_param("ss", $username, $password); 
 
-        if ($stmt->execute()) {
-            // Kalau berhasil, langsung redirect ke index
+        if ($stmt->execute()) {            
             header("Location: index.php");
             exit();
         } else {
@@ -36,10 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h2>Form Register</h2>
-    
+    <div class="container">
     <?php if ($pesan != "") echo "<p style='color:red;'>$pesan</p>"; ?>
 
     <form method="POST" action="register.php">
@@ -53,5 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
+    </div>
 </body>
 </html>
