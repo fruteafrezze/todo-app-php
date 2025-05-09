@@ -1,6 +1,7 @@
 <?php
 include 'database.php';
 
+$conn = koneksiDB();
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
     $stmt = mysqli_prepare($conn, "DELETE FROM activity_list WHERE id = ?");
