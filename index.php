@@ -42,13 +42,12 @@ $total_page = ceil($total_data / $limit);
 <?php endwhile; ?>
 </ul>
 
+
+<p><a href="logout.php">Logout</a></p>
 <div>
     <?php for ($i = 1; $i <= $total_page; $i++): ?>
         <a href="?page=<?= $i ?>"><?= $i ?></a>
     <?php endfor; ?>
 </div>
-
-<p><a href="logout.php">Logout</a></p>
-
 </body>
 </html>
