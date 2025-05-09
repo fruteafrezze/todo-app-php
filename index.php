@@ -8,6 +8,16 @@ $conn = koneksiDB();
 $result = mysqli_query($conn, "SELECT * FROM activity_list ORDER BY id DESC");
 echo "Selamat datang, " . $_SESSION['username'];
 
+$limit = 3;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+$result = mysqli_query($conn, "SELECT * FROM activity_list ORDER BY id DESC LIMIT $limit OFFSET $offset");
+
+$total_result = mysqli_query($conn, "SELECT COUNT(*) as total FROM activity_list");
+$total_row = mysqli_fetch_assoc($total_result);
+$total_data = $total_row['total'];
+$total_page = ceil($total_data / $limit);
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +45,11 @@ echo "Selamat datang, " . $_SESSION['username'];
 <?php endwhile; ?>
 </ul>
 
+<div>
+    <?php for ($i = 1; $i <= $total_page; $i++): ?>
+        <a href="?page=<?= $i ?>"><?= $i ?></a>
+    <?php endfor; ?>
+</div>
 <!-- Logout -->
 <p><a href="logout.php">Logout</a></p>
 
