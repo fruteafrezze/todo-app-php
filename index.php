@@ -1,10 +1,9 @@
 <?php
-include 'auth.php';       // Buat pastiin user udah login
-include 'database.php';   // Koneksi database
+include 'auth.php';       
+include 'database.php';   
 
 $conn = koneksiDB();
 
-// Ambil data activity dari database
 $result = mysqli_query($conn, "SELECT * FROM activity_list ORDER BY id DESC");
 echo "Selamat datang, " . $_SESSION['username'];
 
@@ -28,13 +27,11 @@ $total_page = ceil($total_data / $limit);
 <body>
 <h2>To-Do List</h2>
 
-<!-- Form tambah aktivitas -->
 <form action="add.php" method="POST">
     <input type="text" name="title" placeholder="Apa yang mau kamu kerjain?" required style="width: 15%; height: 20px;">
     <button type="submit">Tambah</button>
 </form>
 
-<!-- Daftar aktivitas -->
 <ul>
 <?php while ($row = mysqli_fetch_assoc($result)): ?>
     <li>
@@ -50,7 +47,7 @@ $total_page = ceil($total_data / $limit);
         <a href="?page=<?= $i ?>"><?= $i ?></a>
     <?php endfor; ?>
 </div>
-<!-- Logout -->
+
 <p><a href="logout.php">Logout</a></p>
 
 </body>
