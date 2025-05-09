@@ -1,10 +1,9 @@
 <?php
-include 'auth.php';       // Buat pastiin user udah login
-include 'database.php';   // Koneksi database
+include 'auth.php';       
+include 'database.php';   
 
 $conn = koneksiDB();
 
-// Ambil data activity dari database
 $result = mysqli_query($conn, "SELECT * FROM activity_list ORDER BY id DESC");
 echo "Selamat datang, " . $_SESSION['username'];
 
