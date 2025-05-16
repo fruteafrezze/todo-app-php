@@ -16,11 +16,11 @@ merupakan aplikasi sederhana untuk melatih kemampuan PHP dengan berbagai fitur s
 - Git
 
 ## View Program 
-<img src="Screenshot/halaman_login.png" alt="Halaman Log-in" width="300"/>
+<img src="_img/halaman_login.png" alt="Halaman Log-in" width="300"/>
 seperti ini tampilan log-in dari aplikasi ToDo list
 
-<img src="Screenshot/halaman_sign_in.png" alt="Halaman sign-up" width="300"/>
+<img src="_img/halaman_sign_in.png" alt="Halaman sign-up" width="300"/>
 ini adalah tampilan register atau sign up untuk aplikasi ToDo list
 
-<img src="Screenshot/halaman_utama.png" alt="Halaman Utama" width="300"/>
+<img src="_img/halaman_utama.png" alt="Halaman Utama" width="300"/>
 Dan ini adalah tampilan utama dari aplikasi ToDo list ini.
