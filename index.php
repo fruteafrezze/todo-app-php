@@ -29,12 +29,10 @@ $total_page = ceil($total_data / $limit);
         <h2>To-Do List</h2>
         <div class="container">
             <form action="add.php" method="POST">
-                <input type="text" name="title" placeholder="Apa yang mau kamu kerjain?" required style="width: 15%; height: 20px;">
+                <input type="text" name="title" placeholder="Apa yang mau kamu kerjain?" required style="width: 30%; height: 20px;">
                 <button type="submit">Tambah</button>
             </form>
 
-<<<<<<< HEAD
-=======
             <table border="1" cellspacing="0" cellpadding="10" style="margin: auto;">
                 <thead>
                     <tr>
@@ -68,5 +66,4 @@ $total_page = ceil($total_data / $limit);
         <?php endfor; ?>
     </div>
     </body>
->>>>>>> 693298511eb3bcdb1e7b7049ec0385d17aab4616
 </html>
